@@ -20,6 +20,16 @@ const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     // every case in this switch statement will have to return
     // the new state of the application
+    case 'INCREASE_COUNTER':
+      return {
+        // the object you're returning from EVERY case is going to be
+        // the new application state
+        ...state,
+        counter: {
+          ...state.counter,
+          value: state.counter.value + 1,
+        },
+      }
     default:
       // we're going to fall into the default case if we dispatched an action
       // that we don't recognize currently: in this edge case let's just
