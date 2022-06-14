@@ -30,6 +30,24 @@ const mainReducer = (state = initialState, action) => {
           value: state.counter.value + 1,
         },
       }
+    case 'DECREASE_COUNTER':
+      //   state.counter.value++
+      // NO! IT'S FORBIDDEN TO CHANGE IN PLACE YOUR STATE (mutate the arguments)
+      return {
+        ...state,
+        counter: {
+          ...state.counter,
+          value: state.counter.value - 1,
+        },
+      }
+    case 'SET_USERNAME':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          name: action.payload,
+        },
+      }
     default:
       // we're going to fall into the default case if we dispatched an action
       // that we don't recognize currently: in this edge case let's just

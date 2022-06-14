@@ -35,6 +35,11 @@ const mapDispatchToProps = (dispatch) => ({
     })
     // every time an action gets dispatch, the reducer function wakes up!
   },
+  decreaseCounter: () => {
+    dispatch({
+      type: 'DECREASE_COUNTER',
+    })
+  },
 })
 
 const Counter = ({
@@ -42,6 +47,7 @@ const Counter = ({
   valueFromTheStore,
   nameFromTheStore,
   increaseCounter,
+  decreaseCounter,
 }) => (
   // valueFromTheStore is not a prop we're getting from App.jsx!
   // it's a props received from mapStateToProps
@@ -49,7 +55,7 @@ const Counter = ({
     <h2>Current name is: {nameFromTheStore}</h2>
     <Button onClick={() => increaseCounter()}>+</Button>
     <p>{valueFromTheStore}</p>
-    <Button>-</Button>
+    <Button onClick={() => decreaseCounter()}>-</Button>
   </div>
 )
 
